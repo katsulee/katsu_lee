@@ -19,7 +19,7 @@ html {
 
 body {
   margin: 0;
-  background-image: url('lilith_background.png');
+  background-image: url('https://i.pinimg.com/originals/f8/e6/af/f8e6af6b14fec371f6e4e93a4ffbe0df.gif');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -65,7 +65,7 @@ body {
   width: 100%;
   max-width: 800px;
   height: 400px; 
-  background-image: url('lilith_bg_clock.mp4');
+  background-image: url('https://i.pinimg.com/736x/17/c7/53/17c75378c0610bd90ec9c0a3e4b66d3e.jpg');
   background-position: center;
   background-size: cover;
   border-radius: var(--radius-lg);
