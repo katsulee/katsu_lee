@@ -65,7 +65,7 @@ body {
   width: 100%;
   max-width: 800px;
   height: 400px; 
-  background-image: url('lilith_bg_clock.gif');
+  background-image: url('lilith_bg_clock.mp4');
   background-position: center;
   background-size: cover;
   border-radius: var(--radius-lg);
