@@ -1,0 +1,547 @@
+:root {
+  --primary-color: #A7C7E7;
+  --text-color: #fff;
+  --intro-text-color: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --radius-md: 20px;
+  --radius-lg: 30px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-image: url('https://cdna.artstation.com/p/assets/images/images/025/965/386/original/lennart-butz-idea5anim4.gif?1587480606&utm_source=Pinterest&utm_medium=organic');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  text-align: center;
+  font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+}
+
+.full-screen {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.clock-section {
+  flex-direction: column;
+  gap: 25px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    max-width: 1040px; 
+    width: 100%;
+    padding: 40px 60px;
+    position: relative;
+    background-color: var(--glass-bg);
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-sm);
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    left: 33.33%; 
+    top: 15%;
+    bottom: 15%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.3); 
+}
+
+.profile-left {
+    flex: 0 0 33.33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-right: 30px; 
+}
+
+.profile-right {
+    flex: 1;
+    text-align: left; 
+    padding-left: 30px; 
+}
+
+.hello-btn {
+    display: inline-block;
+    padding: 8px 35px;
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.6); 
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    cursor: default; 
+    transition: all 0.3s ease;
+}
+
+.hello-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.avatar-wrapper {
+    width: 160px;
+    height: 160px;
+    margin: 0;
+    position: relative;
+}
+
+.profile-bio p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.profile-bio {
+  max-width: 850px; 
+  margin: 15px auto 0;
+}
+
+.profile-bio p {
+  margin: 0 0 10px 0; 
+  line-height: 1.6;
+}
+
+.profile-bio p:last-child {
+  margin-bottom: 0; 
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.clock-bg-card {
+  width: 100%;
+  max-width: 1040px;
+  height: 300px; 
+  background-image: url('https://i.pinimg.com/originals/a8/d4/46/a8d446aeaded108a90c974a5d6a356d9.gif');
+  background-position: center;
+  background-size: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  padding-right: 30px;
+  transition: transform 0.3s ease;
+}
+
+.clock-bg-card:hover {
+  transform: scale(1.02);
+}
+
+.glass-clock {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 30px 30px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 480px;
+}
+
+#time {
+  font-size: 5rem;
+  margin: 0;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+#date {
+  font-size: 2rem;
+  margin: 5px 0 0 0;
+}
+
+.avatar-wrapper {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid var(--text-color);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-name {
+  font-size: 2.5rem;
+  margin: 0 0 5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--intro-text-color);
+}
+
+.profile-bio {
+  font-size: 1.1rem;
+  margin: 0;
+  color: var(--intro-text-color);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  max-width: 1040px; 
+  margin: 0 auto;
+}
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+
+.right-panel {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+.discord-status-pad {
+  position: relative; 
+  display: flex;
+  align-items: center; 
+  gap: 25px; 
+  padding: 25px;
+  height: 180px; 
+  border-radius: 20px;
+  overflow: hidden; 
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-sm);
+}
+
+
+.discord-status-pad::before {
+  content: "";
+  position: absolute;
+  top: -20px; left: -20px; right: -20px; bottom: -20px; 
+  background-image: url('https://i.pinimg.com/originals/65/88/27/658827981799ff72f8921677ad6fe8ed.gif'); 
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px); 
+  z-index: 0;
+}
+
+.discord-status-pad::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4); 
+  z-index: 1;
+}
+
+.status-avatar-container, .status-text {
+  position: relative;
+  z-index: 2;
+}
+
+.status-avatar-container {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0; 
+}
+
+.status-avatar-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.status-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 22px; 
+  height: 22px;
+  border-radius: 50%; 
+  border: 4px solid #1a2332; 
+  z-index: 3;
+}
+
+.status-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  gap: 15px; 
+  text-align: left;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.discord-name { 
+  font-size: 1.5rem; 
+  font-weight: bold; 
+  line-height: 1.2;
+}
+
+.discord-state { 
+  font-size: 0.95rem; 
+  opacity: 0.9; 
+}
+
+.custom-status-text {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-style: italic;
+  margin-top: 5px; 
+}
+
+.mini-socials { 
+  display: flex; 
+  flex-direction: row; 
+  gap: 15px; 
+  width: 100%;
+}
+
+.mini-btn {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  align-items: center;
+  height: 75px; 
+  padding-top: 12px; 
+  border-radius: 15px;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden; 
+}
+
+.fb-mini { background-color: #1877F2; }
+.dc-mini { background-color: #5865F2; }
+
+.mini-btn i {
+  font-size: 1.6rem;
+  transition: transform 0.3s ease;
+}
+
+.mini-btn .social-name {
+  position: absolute;
+  bottom: 12px; 
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.mini-btn .hover-btn {
+  position: absolute;
+  bottom: 12px; 
+  font-size: 0.75rem; 
+  font-weight: bold;
+  opacity: 0; 
+  transform: translateY(15px);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.mini-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.mini-btn:hover i {
+  transform: scale(1.15);
+}
+
+.mini-btn:hover .social-name {
+  opacity: 0;
+  transform: translateY(-15px);
+}
+
+.mini-btn:hover .hover-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fact-pad {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  background-image: url('https://i.pinimg.com/originals/a5/52/e0/a552e04ba4c1657d55b3da88c3842112.gif');
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--glass-border);
+}
+
+.fact-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 80%);
+}
+
+.fact-quote {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: bold;
+  text-align: left;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .profile-name {
+    font-size: 2rem;
+  }
+  .profile-bio {
+    font-size: 1rem;
+  }
+  .clock-bg-card {
+    justify-content: center;
+    padding-right: 0;
+    height: 350px;
+  }
+  #time {
+    font-size: 3.5rem;
+  }
+  .glass-clock {
+    padding: 30px 40px;
+  }
+  .dashboard-container {
+    flex-wrap: wrap;
+  }
+  .left-panel,
+  .right-panel {
+    min-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .full-screen {
+    padding: 10px;
+  }
+  .card {
+    padding: 20px 15px;
+  }
+  .profile-name {
+    font-size: 1.5rem;
+  }
+  .profile-bio {
+    font-size: 0.95rem;
+  }
+  .avatar-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+  .clock-bg-card {
+    height: 320px;
+  }
+  #time {
+    font-size: 2.5rem;
+  }
+  .glass-clock {
+    padding: 20px 30px;
+  }
+  .dashboard-container {
+    gap: 15px;
+  }
+}
+
+@keyframes smoothLoad {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+body {
+  animation: smoothLoad 1s ease-in;
+}
+
+@keyframes floatMagic {
+  0%, 100% { translate: 0 0px; }
+  50% { translate: 0 -15px; } 
+}
+
+.clock-bg-card {
+  animation: floatMagic 6s ease-in-out infinite;
+}
+
+.discord-status-pad {
+  animation: floatMagic 5s ease-in-out infinite 1s;
+}
+
+.fact-pad {
+  animation: floatMagic 7s ease-in-out infinite 0.5s;
+}
+
+@keyframes avatarBreathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+.status-avatar-container {
+  animation: avatarBreathe 4s ease-in-out infinite;
+}
