@@ -343,6 +343,7 @@ body {
   flex-direction: row; 
   gap: 15px; 
   width: 100%;
+  animation: floatMagic 5s ease-in-out infinite 1s;
 }
 
 .mini-btn {
