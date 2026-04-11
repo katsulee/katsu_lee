@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Katsu Lee - English teacher, interpreter, anime and gaming enthusiast. Connect with me to discuss anything!">
+    <meta name="theme-color" content="#A7C7E7">
+    <title>Katsu Lee | Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="katsu.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    <section class="full-screen">
+        <div class="card">
+            <div class="profile-left">
+                <div class="avatar-wrapper">
+                    <img src="./avatar.png" alt="Avatar" class="avatar-img">
+                    <div class="status-dot"></div>
+                </div>
+
+                <div class="music-widget">
+                    <iframe style="border-radius:12px" 
+                        src="https://open.spotify.com/embed/track/1cdYOCmpgVLzqI8GV1pjQZ?utm_source=generator&theme=0&autoplay=1" 
+                        width="100%" 
+                        height="80" 
+                        frameBorder="0" 
+                        allowfullscreen="" 
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="profile-right">
+                <h1 class="profile-name">Katsu Lee</h1>
+                <div class="profile-bio">
+                    <p>I'm <strong>Katsu</strong>, an average friendly nerd on Discord.</p>
+                    <p>An English teacher, interpreter, or just a random guy who loves anime and gaming.</p>
+                    <p>You may know me as Rhett, an English teacher, an interpreter, or just a random guy who loves anime and gaming.</p>
+                    <p>I enjoy sharing my thoughts and experiences with others, and I'm always up for a good conversation.<p>
+                    <p>Feel free to reach out to me if you want to chat about anything!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="full-screen clock-section">
+        <h2 class="visually-hidden">Clock and Discord status</h2>
+        <div class="clock-bg-card">
+            <div class="glass-clock">
+                <h2 id="time">00:00</h2>
+                <p id="date">Day, Date</p>
+            </div>
+        </div>
+
+        <div class="dashboard-container">
+            
+            <div class="left-panel">
+                <div class="discord-status-pad">
+                    <div class="status-avatar-container">
+                        <img id="discord-avatar" src="./avatar.png" alt="Avatar">
+                        <div class="status-dot"></div>
+                    </div>
+                    <div class="status-text">
+                        <div class="user-info">
+                            <span class="discord-name">Katsu</span>
+                            <span class="discord-state" id="discord-status-text">Loading...</span>
+                        </div>
+                        <span id="discord-custom-status" class="custom-status-text"></span>
+                    </div>
+                </div>
+                <div class="mini-socials">
+                    <a href="https://www.facebook.com/leetrhieu/" target="_blank" rel="noopener noreferrer" class="mini-btn fb-mini" aria-label="Open Facebook profile">
+                        <i class="fab fa-facebook-f"></i>
+                        <span class="social-name">Facebook</span>
+                        <span class="hover-btn">contact for work</span>
+                    </a>
+                    <a href="https://discord.gg/sJcMpRbCEg" target="_blank" rel="noopener noreferrer" class="mini-btn dc-mini" aria-label="Open Discord invite">
+                        <i class="fa-brands fa-discord"></i>
+                        <span class="social-name">Discord</span>
+                        <span class="hover-btn">join my server</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="fact-pad">
+                    <div class="fact-overlay"></div>
+                    <p class="fact-quote">"Your existence proves mine"</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bottom-section">
+                    <div class="msg-pad">
+                        <div class="msg-left">
+                            <h3 class="msg-title">Gửi tin nhắn ẩn danh ở đây nhaaa (^・ω・^§)ﾉ</h3>
+                            <form id="anon-form">
+                                <textarea id="msg-content" placeholder="How's your day going?" required maxlength="500"></textarea>
+                                
+                                <div class="form-footer">
+                                    <span id="char-count">0/500</span>
+                                    <button type="submit" id="msg-btn">Finished? Send me (・ω・) <i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </form>
+                            <p id="msg-status"></p>
+                        </div>
+
+                        <div class="msg-right">
+                            <img src="https://i.pinimg.com/originals/9e/36/54/9e365424446c4f759043df1db9cf2c4c.gif" alt="Decor Image" class="msg-decor-img">
+                        </div>
+                    </div>
+                </div>        
+    </section>
+
+    <script defer>
+        const discordId = '733560364507201546';
+        const statusColors = { online: '#23a559', idle: '#f0b232', dnd: '#f23f43', offline: '#80848e' };
+
+        function updateClock() {
+            const now = new Date();
+            
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('time').textContent = `${hours}:${minutes}`;
+
+            const options = { weekday: 'long', month: 'short', day: 'numeric' };
+            document.getElementById('date').textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        async function updateDiscordStatus() {
+            try {
+                const response = await fetch(`https://api.lanyard.rest/v1/users/${discordId}`);
+                const data = await response.json();
+
+                if (!data.success) return;
+
+                const { discord_user, discord_status, activities } = data.data;
+                const avatar = document.getElementById('discord-avatar');
+                if (discord_user?.avatar) {
+                    const ext = discord_user.avatar.startsWith('a_') ? 'gif' : 'png';
+                    avatar.src = `https://cdn.discordapp.com/avatars/${discordId}/${discord_user.avatar}.${ext}?size=256`;
+                }
+
+                document.querySelectorAll('.status-dot').forEach(dot => {dot.style.backgroundColor = statusColors[discord_status] || statusColors.offline;});
+
+                const statusTextEl = document.getElementById('discord-status-text');
+                const currentActivity = Array.isArray(activities) ? activities.find(a => a.type !== 4) : null;
+
+                if (currentActivity) {
+                    let actionVerb = "Playing";
+                    if (currentActivity.type === 2) actionVerb = "Listening to";
+                    if (currentActivity.type === 3) actionVerb = "Watching";
+
+                    statusTextEl.innerHTML = `<i class="fas fa-gamepad"></i> ${actionVerb} <strong>${currentActivity.name}</strong>`;
+                } else {
+                    let statusString = 'Currently Online';
+                    if (discord_status === 'offline') statusString = 'Currently Offline';
+                    if (discord_status === 'idle') statusString = 'Currently Idle';
+                    if (discord_status === 'dnd') statusString = 'Do Not Disturb';
+                    
+                    statusTextEl.textContent = statusString;
+                }
+
+                const customStatus = Array.isArray(activities) ? activities.find(a => a.type === 4) : null;
+                document.getElementById('discord-custom-status').textContent = customStatus?.state || '';
+            } catch (error) {
+                console.error('Discord API Error', error);
+            }
+        }
+
+        const WEBHOOK_URL = 'https://ptb.discord.com/api/webhooks/1492241890613919895/dnlYLSQE7XBt3-cZp2ToENA0IaqcCpnO-OxvcqF0ROA-QdK4r5LyRMqYMs2Bj5zxwq96'; 
+
+        document.getElementById('anon-form').addEventListener('submit', async (e) => {
+            e.preventDefault(); 
+            
+            const contentInput = document.getElementById('msg-content');
+            const statusText = document.getElementById('msg-status');
+            const btn = document.getElementById('msg-btn');
+            
+            const message = contentInput.value.trim();
+            if (!message) return;
+
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+            statusText.textContent = '';
+
+            try {
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        embeds: [{
+                            title: "💌 New Anonymous Message",
+                            description: message,
+                            color: 10974711, 
+                            timestamp: new Date().toISOString()
+                        }]
+                    })
+                });
+
+                if (response.ok) {
+                    statusText.textContent = '✨ Message sent successfully!';
+                    statusText.style.color = '#23a559'; 
+                    contentInput.value = ''; 
+                } else {
+                    throw new Error('Network error');
+                }
+            } catch (error) {
+                statusText.textContent = '❌ Failed to send. Try again later.';
+                statusText.style.color = '#f23f43'; 
+            } finally {
+                btn.innerHTML = 'Send <i class="fas fa-paper-plane"></i>';
+                btn.disabled = false;
+                
+                setTimeout(() => {
+                    statusText.textContent = '';
+                }, 4000);
+            }
+        });
+
+        updateClock();
+        setInterval(updateClock, 60000);
+        updateDiscordStatus();
+    </script>
+
+</body>
+</html>
